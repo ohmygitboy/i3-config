@@ -89,7 +89,7 @@ bindsym $mod+4 workspace 4:system
 bindsym $mod+5 workspace 5:work
 bindsym $mod+6 workspace 6:vm
 bindsym $mod+7 workspace 7:editor
-bindsym $mod+8 workspace 8:cobaltstike
+bindsym $mod+8 workspace 8:cobaltstrike
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10:temp
 
@@ -174,14 +174,15 @@ bar {
 exec --no-startup-id "feh --bg-scale ~/.i3/desktop/desktop.jpg"
 exec --no-startup-id vmware-user
 exec --no-startup-id L2tpIPsecVpn
-exec --no-startup-id "nautilus --no-desktop"
+#exec --no-startup-id "nautilus --no-desktop"
 exec --no-startup-id firefox
 exec --no-startup-id google-chrome
 exec --no-startup-id i3-sensible-terminal
 exec --no-startup-id fcitx
 exec --no-startup-id nm-applet
-exec --no-startup-id vmware
+#exec --no-startup-id vmplayer
 exec --no-startup-id "xset dpms 300" #black the screen
+exec --no-startup-id veracrypt
 #xprop
 assign [class="terminal"]  1:terminal
 assign [class="chrome"]    2:chrome
@@ -189,15 +190,21 @@ assign [class="Firefox"]   3:firefox
 assign [class="Nautilus"]  4:system
 assign [class="Burp"]      10:temp
 assign [class="Vmware"]    6:vm
+assign [class="Vmplayer"]  6:vm
 assign [class="Sublime"]   7:editor
 assign [class="Uex"]       7:editor
-assign [class="rmitage-ArmitageMain"] 8:cobaltstike
+assign [class="rmitage-ArmitageMain"] 8:cobaltstrike
+assign [class="aggressor-Aggressor"] 8:cobaltstrike
 assign [class="Veracrypt"] 10:temp
+assign [class="Pcmanfm"]   4:system
 #lock screen
 bindsym $mod+Control+l exec "gnome-screensaver-command -l"
 
 #open nautilus
 bindsym $mod+n exec "nautilus --no-desktop"
+
+#open pcmanfm
+bindsym $mod+Shift+n exec "pcmanfm"
 
 #ksnapshot
 bindsym $mod+Control+a exec "ksnapshot --region"
@@ -225,10 +232,23 @@ bindsym $mod+Shift+D exec --no-startup-id "kdesudo dmenu_run"
 bindsym $mod+Tab focus right
 bindsym $mod+Shift+Tab focus down
 
+#Bright Control
+
+bindsym XF86MonBrightnessUp  exec --no-startup-id "xbacklight -inc 10"
+bindsym XF86MonBrightnessDown exec --no-startup-id "xbacklight -dec 10"
+
 #volume control
 bindsym XF86AudioRaiseVolume exec "amixer -c 1 sset Master 3%+"
 bindsym XF86AudioLowerVolume exec "amixer -c 1 sset Master 3%-"
 bindsym XF86AudioMute exec "amixer -q -D pulse set Master 1+ toggle"
 
-workspace_layout tabbed
+#subl
 bindsym $mod+x exec "LD_PRELOAD=/usr/lib/libsublime-imfix.so subl"
+
+#vmplayer
+bindsym $mod+Shift+V exec "vmplayer"
+
+#workspace_layout
+workspace_layout tabbed
+
+
